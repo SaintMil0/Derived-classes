@@ -1,0 +1,124 @@
+// Course.java - Base class
+public class Course {
+    private String courseNumber;
+    private String courseTitle;
+    
+    // Default constructor
+    public Course() {
+        courseNumber = "unknown";
+        courseTitle = "unknown";
+    }
+    
+    // Parameterized constructor
+    public Course(String courseNumber, String courseTitle) {
+        this.courseNumber = courseNumber;
+        this.courseTitle = courseTitle;
+    }
+    
+    // Setter methods
+    public void setCourseNumber(String courseNumber) {
+        this.courseNumber = courseNumber;
+    }
+    
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
+    }
+    
+    // Getter methods
+    public String getCourseNumber() {
+        return courseNumber;
+    }
+    
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+    
+    // Method to print course information
+    public void PrintInfo() {
+        System.out.println("Course Information:");
+        System.out.println("   Course Number: " + courseNumber);
+        System.out.println("   Course Title: " + courseTitle);
+    }
+}
+
+// OfferedCourse.java - Derived class
+public class OfferedCourse extends Course {
+    private String instructorName;
+    private String location;
+    private String classTime;
+    
+    // Default constructor
+    public OfferedCourse() {
+        super();
+        instructorName = "TBD";
+        location = "TBD";
+        classTime = "TBD";
+    }
+    
+    // Parameterized constructor
+    public OfferedCourse(String courseNumber, String courseTitle, 
+                        String instructorName, String location, String classTime) {
+        super(courseNumber, courseTitle);
+        this.instructorName = instructorName;
+        this.location = location;
+        this.classTime = classTime;
+    }
+    
+    // Setter methods
+    public void setInstructorName(String instructorName) {
+        this.instructorName = instructorName;
+    }
+    
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    
+    public void setClassTime(String classTime) {
+        this.classTime = classTime;
+    }
+    
+    // Getter methods
+    public String getInstructorName() {
+        return instructorName;
+    }
+    
+    public String getLocation() {
+        return location;
+    }
+    
+    public String getClassTime() {
+        return classTime;
+    }
+    
+    // Override PrintInfo to include additional information
+    @Override
+    public void PrintInfo() {
+        super.PrintInfo();
+        System.out.println("   Instructor Name: " + instructorName);
+        System.out.println("   Location: " + location);
+        System.out.println("   Class Time: " + classTime);
+    }
+}
+
+// CourseInheritanceTest.java - Main class with driver code
+public class CourseInheritanceTest {
+    public static void main(String[] args) {
+        // Create a Course object
+        Course course1 = new Course();
+        course1.setCourseNumber("ECE287");
+        course1.setCourseTitle("Digital Systems Design");
+        
+        // Create an OfferedCourse object
+        OfferedCourse course2 = new OfferedCourse();
+        course2.setCourseNumber("ECE387");
+        course2.setCourseTitle("Embedded Systems Design");
+        course2.setInstructorName("Mark Patterson");
+        course2.setLocation("Wilson Hall 231");
+        course2.setClassTime("WF: 2-3:30 pm");
+        
+        // Print the course information
+        course1.PrintInfo();
+        System.out.println();
+        course2.PrintInfo();
+    }
+}
